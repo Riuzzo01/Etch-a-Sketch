@@ -9,9 +9,15 @@ h1 {
 }
 
 .container {
-    margin: 0 auto;
-    border: 3px solid red;
-    width: 500px;
-    height: 500px;
-    background-color: aliceblue;
+    
+}
+
+.dimension {
+    display: flex;
+    justify-content: space-around;
+}
+
+.fill {
+    display: flex;
+    justify-content: center;
 }

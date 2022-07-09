@@ -1,0 +1,17 @@
+* {
+    background-color: purple;
+}
+
+h1 {
+    text-align: center;
+    color: whitesmoke;
+    padding-bottom: 50px;
+}
+
+.container {
+    margin: 0 auto;
+    border: 3px solid red;
+    width: 500px;
+    height: 500px;
+    background-color: aliceblue;
+}

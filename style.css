@@ -4,20 +4,44 @@
 
 h1 {
     text-align: center;
-    color: whitesmoke;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2f0130;
     padding-bottom: 50px;
-}
-
-.container {
-    
 }
 
 .dimension {
     display: flex;
     justify-content: space-around;
+    margin: 50px;
+}
+
+.dimension  button {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 30px 0;
+    width: 90px;
+    background: radial-gradient(#fcba03, #f7d574);
+    font-size: 22px;
+    color: black;
+    text-shadow: 0 0 7px #FFF;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #FFF, 0 0 15px #FFF inset;
+    cursor: pointer;
 }
 
 .fill {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    margin: 50px;
+}
+
+.fill button {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 90px;
+    text-shadow: 0 0 7px #FFF;
+    border-radius: 25%;
+    box-shadow: 0 0 15px #FFF, 0 0 15px #FFF inset;
+    background: radial-gradient(#fcba03, #f7d574);
+
+
 }

@@ -1,36 +1,84 @@
 function setGridDimension(dim) {
+    dimension = dim;
     const containerOld = document.querySelector("#container");
     containerOld.remove()
     const containerNew = document.createElement("div");
     containerNew.id = "container";
-    containerNew.setAttribute("style", " margin: 0 auto; border: 3px solid red; width: 500px; height: 500px; background-color: aliceblue; display: grid; grid-template-rows: repeat(" + dim + ", " + 500.0/dim + "px); grid-template-columns: repeat(" + dim + ", " + 500.0/dim + "px);");
+    containerNew.setAttribute("style", " margin: 0 auto; border: 3px solid red; width: 500px; height: 500px; display: grid; grid-template-rows: repeat(" + dim + ", " + 500.0/dim + "px); grid-template-columns: repeat(" + dim + ", " + 500.0/dim + "px);");
     document.querySelector("body").appendChild(containerNew);
     for(let i = 1; i <= dim; i++) {
         for(let j = 1; j <= dim; j++) {
             const square = document.createElement("div");
-            square.setAttribute("style", "grid-column-start: " + i + "; grid-row-start: " + j + "; grid-column-end: " + i + "; grid-row-end: " + j + "; border: 1px solid black; background-color: white"); 
+            square.setAttribute("style", "grid-column-start: " + i + "; grid-row-start: " + j + "; border: 1px solid black"); 
+            square.style.backgroundColor = "rgb(255, 255, 255)";
             containerNew.appendChild(square);
         }
     }
 }
 
-function filler() {
-    document.querySelectorAll("#container div").forEach(element => { 
-        element.addEventListener("mouseover", () => {element.setAttribute("style", "background-color: black;");});
-    });
+function filler(color) {
+        document.querySelectorAll("#container div").forEach(element => { 
+            element.addEventListener("mouseleave", (e) => {e.target.style.backgroundColor = color});
+        });
+    
 }
 
-setGridDimension(30);
+function fillerRainbow() {
+        document.querySelectorAll("#container div").forEach(element => { 
+            element.addEventListener("mouseleave", (e) => {e.target.style.backgroundColor = "rgb(" + Math.floor(Math.random() * 255 + 1) + "," + Math.floor(Math.random() * 255 + 1) + ","  + Math.floor(Math.random() * 255 + 1) + ")";});                                 
+            }); 
+}
 
-const radio10 = document.querySelector("#radio10");
-const radio20 = document.querySelector("#radio20");
-const radio30 = document.querySelector("#radio30");
+function fillerShade() {
+    document.querySelectorAll("#container div").forEach(element => { 
+        element.addEventListener("mouseleave", (e) => {shadeColor(e);})});
+}
 
-radio10.addEventListener("click", () => {setGridDimension(10);});
-radio20.addEventListener("click", () => {setGridDimension(20);});
-radio30.addEventListener("click", () => {setGridDimension(30);});
+function shadeColor(e) {
+    let color = e.target.style.backgroundColor;
+    let tripletArray = JSON.parse("[" + color.slice(4, color.length - 1) + "]");
+    let color1 = Number(tripletArray[0]);
+    let color2 = Number(tripletArray[1]);
+    let color3 = Number(tripletArray[2]);
+    if((color1 - 30) < 0) {
+        color1 = 0;
+    }
+    else {
+        color1 -= 30;
+    }
 
-const color = document.querySelector("button");
+    if((color2 - 30) < 0) {
+        color2 = 0;
+    }
+    else {
+        color2 -= 30;
+    }
 
-color.addEventListener("click", filler)
+    if((color3 - 30) < 0) {
+        color3 = 0;
+    }
+    else {
+        color3 -= 30;
+    }
 
+    e.target.style.backgroundColor = "rgb(" + color1 + "," + color2 + "," + color3 + ")";
+}
+
+let dimension = 30;
+setGridDimension(dimension);
+
+
+document.querySelectorAll(".dimension button").forEach(element => {
+    element.addEventListener("click", (e) => {setGridDimension(Number(e.target.id));});});
+
+const black = document.querySelector("#black");
+const clear = document.querySelector("#clear");
+const rainbow = document.querySelector("#rainbow");
+const white = document.querySelector("#white");
+const shade = document.querySelector("#shade")
+
+black.addEventListener("click", () => {filler("rgb(0, 0, 0)");});
+white.addEventListener("click", () => {filler("rgb(255, 255, 255)");});
+clear.addEventListener("click", () => {setGridDimension(dimension);});
+rainbow.addEventListener("click", fillerRainbow);
+shade.addEventListener("click", fillerShade);

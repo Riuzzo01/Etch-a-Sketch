@@ -11,23 +11,18 @@
 <body>
     <h1>Etch-a-Sketch</h1>
     <div class="dimension">
-        <div class="10">
-            <input type="radio" name="dimension" id="radio10" value="10">
-            <p>10x10</p>
-        </div>
-
-        <div class="20">
-            <input type="radio" name="dimension" id="radio20" value="20">
-            <p>20x20</p>
-        </div>
-
-        <div class="30">
-            <input type="radio" name="dimension" id="radio30" value="30">
-            <p>30x30</p>
-        </div>
+        <button id="10">10x10</button>
+        <button id="16">16x16</button>
+        <button id="20">20x20</button>
+        <button id="30">30x30</button>
+        <button id="64">64x64</button>
     </div>
     <div class="fill">
-        <button>Color</button>
+        <button id="black">Dark Mode</button>
+        <button id="white">Eraser</button>
+        <button id="shade">Progressive Mode</button>
+        <button id="clear">Clear</button>
+        <button id="rainbow">Rainbow Mode</button>
     </div>
     
     <div id="container"></div>
